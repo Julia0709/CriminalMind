@@ -8,14 +8,15 @@ import java.util.UUID;
  */
 
 public class Crime {
-    // UUID is a Java util class included in the Android Framework.
-    // It provides an easy way to generage universally unique ID values.
+    // UUID makes unique ID values
     private UUID mId;
     private String mTitle;
     private Date mDate;
     private boolean mSolved;
+    private boolean mRequirePolice;
 
 
+    // getter
     public Crime() {
         mId = UUID.randomUUID();
         mDate = new Date();
@@ -37,6 +38,11 @@ public class Crime {
         return mSolved;
     }
 
+    public boolean ismRequiresPolice() {
+        return mRequirePolice;
+    }
+
+    // setter
     public void setTitle(String title) {
         mTitle = title;
     }
@@ -49,4 +55,7 @@ public class Crime {
         mSolved = solved;
     }
 
+    public void setmRequiresPolice(boolean mRequiresPolice) {
+        this.mRequirePolice = mRequiresPolice;
+    }
 }
