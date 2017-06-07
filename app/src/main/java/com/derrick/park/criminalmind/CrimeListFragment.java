@@ -7,9 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,6 +23,11 @@ public class CrimeListFragment extends Fragment {
 
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdater;
+
+    private ImageView mImageViewSolved;
+
+    private SimpleDateFormat simpleDateFormatDay = new SimpleDateFormat("MM/dd/yyyy");
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,12 +56,18 @@ public class CrimeListFragment extends Fragment {
             mTitleTextView = (TextView) itemView.findViewById(R.id.crime_title);
             mDateTextView = (TextView) itemView.findViewById(R.id.crime_date);
 
+            mImageViewSolved = (ImageView) itemView.findViewById(R.id.image_solved);
+
         }
 
         public void bind(final Crime crime) {
 
             mTitleTextView.setText(crime.getTitle());
-            mDateTextView.setText(crime.getDate().toString());
+
+            Date date = crime.getDate();
+            mDateTextView.setText(simpleDateFormatDay.format(date));
+
+            mImageViewSolved.setImageResource(R.drawable.ic_solved);
 
             // toast when itemView is clicked
             itemView.setOnClickListener(new View.OnClickListener() {
