@@ -72,6 +72,9 @@ public class CrimeListFragment extends Fragment {
         public void bind(final Crime crime) {
 
             mTitleTextView.setText(crime.getTitle());
+            // change text style: size, color
+            mTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+            mTitleTextView.setTextColor(BLACK);
 
             Date date = crime.getDate();
             mDateTextView.setText(simpleDateFormatDay.format(date));
